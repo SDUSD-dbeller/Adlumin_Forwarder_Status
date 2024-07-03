@@ -1,0 +1,27 @@
+###################################################
+#
+# Filename: /etc/systemd/system/http_server.service
+# Created: 6/18/2024
+# Created By: Dave Beller
+# Purpose: Start HTTP server for Adlumin service condition monitoring
+#
+# Changelog:
+# 20240618 DB file created
+#
+###################################################
+[Unit]
+Description=Simple Python HTTP Server
+After=network.target
+Documentation=man:SimpleHTTPServer(1)
+
+[Service]
+Type=forking
+ExecStart=/home/adlumin/bin/start_http_server.sh
+WorkingDirectory=/home/adlumin/log
+#Restart=always
+User=adlumin
+Group=adlumin
+#ExecStop=/bin/kill `/bin/ps aux | /bin/grep http.server | /bin/grep -v grep | /usr/bin/awk '{ print $2 }'`
+#AmbientCapabilities=CAP_NET_BIND_SERVICE
+[Install]
+WantedBy=multi-user.target
