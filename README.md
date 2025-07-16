@@ -12,6 +12,7 @@ Sending mail alerts requires mailutils be installed and configured:
 		Edit /etc/postfix/main.cf
 			Either add the destination domains to mydestination = or comment out the mydestination line to allow sending to all domains
 			enter SMTP relay in relayhost, e.g. relayhost = mail.mydomain.com
+   			enter your domain in myorigin, e.g. myorigin = mydomain.com
 
 http_server.service
 	Service file to run python3 http server. Should be placed in /etc/systemd/system/
